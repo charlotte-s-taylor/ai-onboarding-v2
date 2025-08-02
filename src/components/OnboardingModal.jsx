@@ -1,4 +1,3 @@
-// src/components/OnboardingModal.jsx
 import React, { useState } from "react";
 import "../main.css";
 
@@ -48,6 +47,7 @@ const OnboardingModal = ({ onFinish }) => {
             <input name="role" placeholder="Add role" onChange={handleChange} />
           </>
         );
+
       case 2:
         return (
           <>
@@ -67,6 +67,7 @@ const OnboardingModal = ({ onFinish }) => {
             <input name="activation2" placeholder="Second activation step e.g. add a colleague" onChange={handleChange} />
           </>
         );
+
       case 3:
         return (
           <>
@@ -90,36 +91,39 @@ const OnboardingModal = ({ onFinish }) => {
             <h3>Funnel 2</h3>
             <div className="funnel-row">
               <div>
-                <label>Steps in the funnel<span>*</span></label>
+                <label>Steps in the funnel</label>
                 <input name="funnel2steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
               </div>
               <div>
-                <label>Frontend tags<span>*</span></label>
+                <label>Frontend tags</label>
                 <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
               </div>
             </div>
           </>
         );
-case 4:
-  return (
-case 4:
-  return (
-    <div className="loading-screen">
-      <h2>Hold tight!</h2>
-      <p>Generating your onboarding experience...</p>
-      <div className="spinner"></div>
 
-      <div className="demo-preview">
-        <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-        <div className="tooltip" style={{ top: '60%', left: '10%' }}>
-          Enter destination
-        </div>
-        <div className="tooltip" style={{ top: '60%', left: '60%' }}>
-          Find prices
-        </div>
-      </div>
-    </div>
-  );
+      case 4:
+        return (
+          <div className="loading-screen">
+            <h2>Hold tight!</h2>
+            <p>Generating your onboarding experience...</p>
+            <div className="spinner"></div>
+            <div className="demo-preview">
+              <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+              <div className="tooltip" style={{ top: '60%', left: '10%' }}>
+                Enter destination
+              </div>
+              <div className="tooltip" style={{ top: '60%', left: '60%' }}>
+                Find prices
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="modal">
