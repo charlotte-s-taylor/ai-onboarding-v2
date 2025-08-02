@@ -111,30 +111,34 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
           </>
         );
-case 4:
-  return (
-    <div className="loading-screen">
-      {!showPreview && (
-        <>
-          <h2>Hold tight!</h2>
-          <p>Generating your onboarding experience...</p>
-          <div className="spinner"></div>
-        </>
-      )}
+      case 4:
+        return (
+          <div className="loading-screen">
+            {!showPreview && (
+              <>
+                <h2>Hold tight!</h2>
+                <p>Generating your onboarding experience...</p>
+                <div className="spinner"></div>
+              </>
+            )}
 
-      {showPreview && (
-        <div className="demo-preview">
-          <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-          <div className="tooltip" style={{ top: '56%', left: '18%' }}>
-            Enter your destination
+            {showPreview && (
+              <div className="demo-preview">
+                <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+                <div className="tooltip" style={{ top: '56%', left: '18%' }}>
+                  Enter your destination
+                </div>
+                <div className="tooltip" style={{ top: '86%', left: '48%' }}>
+                  Find prices
+                </div>
+              </div>
+            )}
           </div>
-          <div className="tooltip" style={{ top: '86%', left: '48%' }}>
-            Find prices
-          </div>
-        </div>
-      )}
-    </div>
-  );
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="modal">
