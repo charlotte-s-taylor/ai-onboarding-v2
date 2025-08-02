@@ -146,7 +146,7 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
           </>
         );
-   case 4:
+  case 4:
   return (
     <div className="loading-screen">
       {!showPreview && (
@@ -158,27 +158,64 @@ const OnboardingModal = ({ onFinish }) => {
       )}
 
       {showPreview && (
-        <>
-          <div className="demo-preview">
-            <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-            <div className="tooltip" style={{ top: '56%', left: '18%' }}>
-              Enter your destination
-            </div>
-            <div className="tooltip" style={{ top: '86%', left: '48%' }}>
-              Click to see prices
-            </div>
+        <div className="demo-preview" style={{ position: "relative" }}>
+          <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+
+          {/* Tooltips */}
+          <div className="tooltip" style={{ top: '56%', left: '18%' }}>
+            Enter your destination
+          </div>
+          <div className="tooltip" style={{ top: '86%', left: '48%' }}>
+            Click to see prices
           </div>
 
-          {/* Experiment Card */}
-          <div style={{ marginTop: "48px", padding: "24px", background: "#fff", borderRadius: "16px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
-            <h3>Experiment demo</h3>
-            <p>Split new users into experiment and control groups to test your onboarding.</p>
+          {/* Experiment card in bottom-right */}
+          <div style={{
+            position: "absolute",
+            bottom: "-120px",
+            right: "0",
+            width: "300px",
+            padding: "20px",
+            background: "#fff",
+            borderRadius: "16px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+            zIndex: 10
+          }}>
+            <h3 style={{ marginTop: 0 }}>Experiment demo</h3>
+            <p style={{ fontSize: "14px", marginBottom: "12px" }}>
+              Split new users into experiment and control groups to test your onboarding.
+            </p>
             <button
               className="next-button"
-              style={{ marginTop: "16px" }}
               onClick={() => {
-                alert("✅ Experiment created!");
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 3000);
               }}
+            >
+              Create experiment
+            </button>
+          </div>
+
+          {/* Toast */}
+          {showToast && (
+            <div style={{
+              position: "fixed",
+              bottom: "24px",
+              right: "24px",
+              background: "#333",
+              color: "#fff",
+              padding: "12px 20px",
+              borderRadius: "8px",
+              fontSize: "14px",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
+            }}>
+              ✅ Experiment created!
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
             >
               Create experiment
             </button>
