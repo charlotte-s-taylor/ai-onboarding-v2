@@ -40,6 +40,7 @@ const OnboardingModal = ({ onFinish }) => {
   const [step, setStep] = useState(1);
   const [showPreview, setShowPreview] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [showExperimentModal, setShowExperimentModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -74,6 +75,12 @@ const OnboardingModal = ({ onFinish }) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleExperimentSubmit = () => {
+    setShowExperimentModal(false);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
   };
 
   const renderStep = () => {
@@ -161,6 +168,7 @@ const OnboardingModal = ({ onFinish }) => {
             {showPreview && (
               <div className="demo-preview" style={{ position: "relative" }}>
                 <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+
                 <div className="tooltip" style={{ top: '56%', left: '18%' }}>
                   Enter your destination
                 </div>
@@ -168,10 +176,30 @@ const OnboardingModal = ({ onFinish }) => {
                   Click to see prices
                 </div>
 
-                <ExperimentCard onCreate={() => {
-                  setShowToast(true);
-                  setTimeout(() => setShowToast(false), 3000);
-                }} />
+                <ExperimentCard onCreate={() => setShowExperimentModal(true)} />
+
+                {showExperimentModal && (
+                  <div className="modal-backdrop">
+                    <div className="modal experiment-modal">
+                      <div className="modal-header">
+                        <h2>Activation experiment</h2>
+                        <p className="subtitle">Split new users 50/50 experiment vs control to test your onboarding flow.</p>
+                      </div>
+                      <label>Start date*</label>
+                      <input placeholder="Enter start date" />
+                      <label>Duration*</label>
+                      <input placeholder="Select duration" />
+                      <label>Activation goal 1*</label>
+                      <input placeholder="e.g. Increase activation of 'create a project'" />
+                      <label>Activation goal 2</label>
+                      <input placeholder="e.g. Increase activation of 'add a colleague'" />
+                      <div className="modal-footer">
+                        <button className="back-button" onClick={() => setShowExperimentModal(false)}>Cancel</button>
+                        <button className="next-button" onClick={handleExperimentSubmit}>Create experiment</button>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {showToast && (
                   <div style={{
@@ -183,8 +211,7 @@ const OnboardingModal = ({ onFinish }) => {
                     padding: "12px 20px",
                     borderRadius: "8px",
                     fontSize: "14px",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-                    zIndex: 999
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
                   }}>
                     ✅ Experiment created!
                   </div>
