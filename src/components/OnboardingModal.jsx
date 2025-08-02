@@ -102,18 +102,21 @@ const OnboardingModal = ({ onFinish }) => {
         );
 case 4:
   return (
+case 4:
+  return (
     <div className="loading-screen">
       <h2>Hold tight!</h2>
       <p>Generating your onboarding experience...</p>
       <div className="spinner"></div>
 
       <div className="demo-preview">
-        <p className="subtitle">Example onboarding flow:</p>
-        <img
-          src="/uber-dashboard.png"
-          alt="Uber UI demo with tooltips"
-          style={{ maxWidth: '100%', marginTop: '1rem', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
-        />
+        <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+        <div className="tooltip" style={{ top: '60%', left: '10%' }}>
+          Enter destination
+        </div>
+        <div className="tooltip" style={{ top: '60%', left: '60%' }}>
+          Find prices
+        </div>
       </div>
     </div>
   );
