@@ -111,7 +111,6 @@ const OnboardingModal = ({ onFinish }) => {
       {step < 4 && (
         <div className="modal-footer">
           {step > 1 && <button onClick={prevStep}>Back</button>}
-          {step === 3 && <button onClick={reset}>Cancel</button>}
           <button onClick={step === 3 ? handleFinalSubmit : nextStep}>Next</button>
         </div>
       )}
