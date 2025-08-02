@@ -1,41 +1,33 @@
-// src/components/ExperimentModal.jsx
-import React, { useState } from "react";
+// ExperimentModal.jsx
+import React from "react";
+import "../main.css";
 
-const ExperimentModal = ({ onClose, onCreate }) => {
-  const [formData, setFormData] = useState({
-    startDate: "",
-    duration: "",
-    goal1: "",
-    goal2: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = () => {
-    console.log("Creating experiment:", formData);
-    onCreate();
-  };
-
+const ExperimentModal = ({ onClose }) => {
   return (
     <div className="modal">
       <div className="modal-header">
-        <h2>Your product</h2>
-        <div className="progress-bar"><div className="progress" style={{ width: "100%" }} /></div>
+        <button className="close-button" onClick={onClose}>×</button>
+        <h2>Activation experiment</h2>
+        <p className="subtitle">
+          Split new users 50/50 into experiment and control groups.
+        </p>
       </div>
-      <p className="subtitle">Split new users 50/50 experiment vs control to test your onboarding flow.</p>
-      <label>Start date<span>*</span></label>
-      <input name="startDate" placeholder="Enter start date" onChange={handleChange} />
+
+      <label>Start Date<span>*</span></label>
+      <input placeholder="Enter start date" />
+
       <label>Duration<span>*</span></label>
-      <input name="duration" placeholder="Select duration" onChange={handleChange} />
+      <input placeholder="Select duration" />
+
       <label>Activation goal 1<span>*</span></label>
-      <input name="goal1" placeholder='e.g. "Increase activation of create a project"' onChange={handleChange} />
+      <input placeholder="e.g. Increase activation of 'create a project'" />
+
       <label>Activation goal 2</label>
-      <input name="goal2" placeholder='e.g. "Increase activation of add a colleague"' onChange={handleChange} />
+      <input placeholder="e.g. Increase activation of 'add a colleague'" />
+
       <div className="modal-footer">
-        <button onClick={onClose}>Cancel</button>
-        <button onClick={handleSubmit}>Create experiment</button>
+        <button className="back-button" onClick={onClose}>Cancel</button>
+        <button className="next-button" onClick={onClose}>Create experiment</button>
       </div>
     </div>
   );
