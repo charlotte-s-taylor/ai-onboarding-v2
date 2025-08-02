@@ -52,11 +52,11 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
             <p className="subtitle">Tell us about you.</p>
             <label>Name<span>*</span></label>
-            <input name="name" placeholder="Add name" onChange={handleChange} />
+            <input name="name" placeholder="Add name" value={formData.name} onChange={handleChange} />
             <label>Company<span>*</span></label>
-            <input name="company" placeholder="Add company" onChange={handleChange} />
+            <input name="company" placeholder="Add company" value={formData.company} onChange={handleChange} />
             <label>Role<span>*</span></label>
-            <input name="role" placeholder="Add role" onChange={handleChange} />
+            <input name="role" placeholder="Add role" value={formData.role} onChange={handleChange} />
           </>
         );
       case 2:
@@ -69,13 +69,13 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
             <p className="subtitle">Tell us about your product to help us generate your onboarding experience.</p>
             <label>Product feature/name<span>*</span></label>
-            <input name="feature" placeholder="Add name" onChange={handleChange} />
+            <input name="feature" placeholder="Add name" value={formData.feature} onChange={handleChange} />
             <label>Link to your application<span>*</span></label>
-            <input name="link" placeholder="Add link" onChange={handleChange} />
+            <input name="link" placeholder="Add link" value={formData.link} onChange={handleChange} />
             <label>Activation step 1<span>*</span></label>
-            <input name="activation1" placeholder="First activation step e.g. create a new project" onChange={handleChange} />
+            <input name="activation1" placeholder="First activation step e.g. create a new project" value={formData.activation1} onChange={handleChange} />
             <label>Activation step 2</label>
-            <input name="activation2" placeholder="Second activation step e.g. add a colleague" onChange={handleChange} />
+            <input name="activation2" placeholder="Second activation step e.g. add a colleague" value={formData.activation2} onChange={handleChange} />
           </>
         );
       case 3:
@@ -90,24 +90,24 @@ const OnboardingModal = ({ onFinish }) => {
 
             <h3>Funnel 1</h3>
             <div className="funnel-row">
-              <input name="funnel1step1" placeholder="Step 1" onChange={handleChange} />
-              <input name="funnel1step2" placeholder="Step 2" onChange={handleChange} />
-              <input name="funnel1step3" placeholder="Step 3" onChange={handleChange} />
+              <input name="funnel1step1" placeholder="Step 1" value={formData.funnel1step1} onChange={handleChange} />
+              <input name="funnel1step2" placeholder="Step 2" value={formData.funnel1step2} onChange={handleChange} />
+              <input name="funnel1step3" placeholder="Step 3" value={formData.funnel1step3} onChange={handleChange} />
             </div>
             <div>
               <label>Frontend tags<span>*</span></label>
-              <input name="funnel1tags" placeholder="#selector, [data-testid='cta']" onChange={handleChange} />
+              <input name="funnel1tags" placeholder="#selector, [data-testid='cta']" value={formData.funnel1tags} onChange={handleChange} />
             </div>
 
             <h3>Funnel 2</h3>
             <div className="funnel-row">
-              <input name="funnel2step1" placeholder="Step 1" onChange={handleChange} />
-              <input name="funnel2step2" placeholder="Step 2" onChange={handleChange} />
-              <input name="funnel2step3" placeholder="Step 3" onChange={handleChange} />
+              <input name="funnel2step1" placeholder="Step 1" value={formData.funnel2step1} onChange={handleChange} />
+              <input name="funnel2step2" placeholder="Step 2" value={formData.funnel2step2} onChange={handleChange} />
+              <input name="funnel2step3" placeholder="Step 3" value={formData.funnel2step3} onChange={handleChange} />
             </div>
             <div>
               <label>Frontend tags<span>*</span></label>
-              <input name="funnel2tags" placeholder="#selector, [data-testid='cta']" onChange={handleChange} />
+              <input name="funnel2tags" placeholder="#selector, [data-testid='cta']" value={formData.funnel2tags} onChange={handleChange} />
             </div>
           </>
         );
@@ -128,9 +128,9 @@ const OnboardingModal = ({ onFinish }) => {
                 <div className="tooltip" style={{ top: '56%', left: '18%' }}>
                   Enter your destination
                 </div>
-              <div className="tooltip" style={{ top: '94%', left: '18%' }}>
-  Click to see prices
-</div>
+                <div className="tooltip" style={{ top: '86%', left: '48%' }}>
+                  Click to see prices
+                </div>
               </div>
             )}
           </div>
