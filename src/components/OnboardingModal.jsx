@@ -117,22 +117,38 @@ const OnboardingModal = ({ onFinish }) => {
       {!showPreview && (
         <>
           <h2>Hold tight!</h2>
-          <p>Generating your experiment preview...</p>
+          <p>Generating your onboarding experience...</p>
           <div className="spinner"></div>
         </>
       )}
 
       {showPreview && (
-        <div className="demo-preview">
-          <img src="/experiment-dashboard.png" alt="Experiment demo" className="demo-image" />
+        <>
+          <div className="demo-preview">
+            <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+            <div className="tooltip" style={{ top: '56%', left: '18%' }}>
+              Enter your destination
+            </div>
+            <div className="tooltip" style={{ top: '86%', left: '48%' }}>
+              Click to see prices
+            </div>
+          </div>
 
-          <div className="tooltip" style={{ top: '60%', left: '20%' }}>
-            Experiment group A
+          {/* Experiment Card */}
+          <div style={{ marginTop: "48px", padding: "24px", background: "#fff", borderRadius: "16px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+            <h3>Experiment demo</h3>
+            <p>Split new users into experiment and control groups to test your onboarding.</p>
+            <button
+              className="next-button"
+              style={{ marginTop: "16px" }}
+              onClick={() => {
+                alert("✅ Experiment created!");
+              }}
+            >
+              Create experiment
+            </button>
           </div>
-          <div className="tooltip" style={{ top: '85%', left: '55%' }}>
-            Compare vs control
-          </div>
-        </div>
+        </>
       )}
     </div>
   );
