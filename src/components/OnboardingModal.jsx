@@ -12,9 +12,13 @@ const OnboardingModal = ({ onFinish }) => {
     link: "",
     activation1: "",
     activation2: "",
-    funnel1steps: "",
+    funnel1step1: "",
+    funnel1step2: "",
+    funnel1step3: "",
     funnel1tags: "",
-    funnel2steps: "",
+    funnel2step1: "",
+    funnel2step2: "",
+    funnel2step3: "",
     funnel2tags: "",
   });
 
@@ -36,7 +40,7 @@ const OnboardingModal = ({ onFinish }) => {
           <>
             <div className="modal-header">
               <h2>Your details</h2>
-              <button className="close-button top-right" onClick={reset}>×</button>
+              <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "33%" }} /></div>
             </div>
             <p className="subtitle">Tell us about you.</p>
@@ -48,13 +52,12 @@ const OnboardingModal = ({ onFinish }) => {
             <input name="role" placeholder="Add role" onChange={handleChange} />
           </>
         );
-
       case 2:
         return (
           <>
             <div className="modal-header">
               <h2>Your product</h2>
-              <button className="close-button top-right" onClick={reset}>×</button>
+              <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "66%" }} /></div>
             </div>
             <p className="subtitle">Tell us about your product to help us generate your onboarding experience.</p>
@@ -68,41 +71,37 @@ const OnboardingModal = ({ onFinish }) => {
             <input name="activation2" placeholder="Second activation step e.g. add a colleague" onChange={handleChange} />
           </>
         );
-
       case 3:
         return (
           <>
             <div className="modal-header">
               <h2>Your funnels</h2>
-              <button className="close-button top-right" onClick={reset}>×</button>
+              <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "100%" }} /></div>
             </div>
             <p className="subtitle">Add steps of your activation funnel to help generate your onboarding experience.</p>
             <h3>Funnel 1</h3>
             <div className="funnel-row">
-              <div>
-                <label>Steps in the funnel<span>*</span></label>
-                <input name="funnel1steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
-              </div>
-              <div>
-                <label>Frontend tags<span>*</span></label>
-                <input name="funnel1tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
-              </div>
+              <input name="funnel1step1" placeholder="Step 1" onChange={handleChange} />
+              <input name="funnel1step2" placeholder="Step 2" onChange={handleChange} />
+              <input name="funnel1step3" placeholder="Step 3" onChange={handleChange} />
+            </div>
+            <div className="funnel-tags">
+              <label>Frontend tags<span>*</span></label>
+              <input name="funnel1tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
             </div>
             <h3>Funnel 2</h3>
             <div className="funnel-row">
-              <div>
-                <label>Steps in the funnel<span>*</span></label>
-                <input name="funnel2steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
-              </div>
-              <div>
-                <label>Frontend tags<span>*</span></label>
-                <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
-              </div>
+              <input name="funnel2step1" placeholder="Step 1" onChange={handleChange} />
+              <input name="funnel2step2" placeholder="Step 2" onChange={handleChange} />
+              <input name="funnel2step3" placeholder="Step 3" onChange={handleChange} />
+            </div>
+            <div className="funnel-tags">
+              <label>Frontend tags<span>*</span></label>
+              <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
             </div>
           </>
         );
-
       case 4:
         return (
           <div className="loading-screen">
@@ -111,11 +110,11 @@ const OnboardingModal = ({ onFinish }) => {
             <div className="spinner"></div>
             <div className="demo-preview">
               <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-              <div className="tooltip speech-bubble" style={{ top: '60%', left: '10%' }}>
-                Enter destination
+              <div className="tooltip" style={{ top: '60%', left: '10%' }}>
+                <span className="tooltip-text">Enter destination</span>
               </div>
-              <div className="tooltip speech-bubble" style={{ top: '60%', left: '60%' }}>
-                Find prices
+              <div className="tooltip" style={{ top: '60%', left: '60%' }}>
+                <span className="tooltip-text">Find prices</span>
               </div>
             </div>
           </div>
