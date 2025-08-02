@@ -72,7 +72,7 @@ const OnboardingModal = ({ onFinish }) => {
           <h2>
             {step === 1 && "Your details"}
             {step === 2 && "Your product"}
-            {step === 3 && "Your activation funnels"}
+            {step === 3 && "Your funnels"}
           </h2>
           <button className="close-button" onClick={reset}>×</button>
           <div className="progress-bar">
