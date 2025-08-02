@@ -1,98 +1,87 @@
-/* src/main.css */
 body {
   font-family: Roboto, sans-serif;
+  background-color: #fff;
   margin: 0;
   padding: 0;
-  background: #fff;
 }
 
 .App {
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .modal {
-  max-width: 480px;
-  margin: 0 auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
   padding: 2rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
-.modal-header h2 {
-  margin: 0;
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #eee;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: black;
+  transition: width 0.3s ease;
 }
 
 .subtitle {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-label {
-  display: block;
-  margin-top: 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 1rem;
 }
 
 input {
   width: 100%;
   padding: 0.6rem;
-  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  font-size: 1rem;
 }
 
-.modal-footer {
-  display: flex;
-  justify-content: flex-end; /* Pushes buttons to the right */
-  gap: 1rem;
-  margin-top: 2rem;
+label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: block;
 }
 
-button {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  background-color: black;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #333;
-}
-
-.progress-bar {
-  background: #eee;
-  height: 6px;
-  border-radius: 3px;
-  overflow: hidden;
-  margin-top: 0.5rem;
-}
-
-.progress {
-  height: 100%;
-  background: black;
-}
-
-.funnel-row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+label span {
+  color: red;
 }
 
 .modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .next-button {
@@ -100,17 +89,23 @@ button:hover {
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.close-button {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.next-button:hover {
+  background-color: #333;
+}
+
+.funnel-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.funnel-row > div {
+  flex: 1;
 }
 
 .loading-screen {
@@ -118,37 +113,13 @@ button:hover {
   padding: 2rem;
 }
 
-.demo-preview {
-  position: relative;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.demo-image {
-  width: 90%;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-}
-
-.tooltip {
-  position: absolute;
-  background-color: black;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
 .spinner {
-  margin: 2rem auto;
-  border: 4px solid #eee;
+  border: 4px solid #f3f3f3;
   border-top: 4px solid black;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
+  margin: 1rem auto;
   animation: spin 1s linear infinite;
 }
 
@@ -158,13 +129,26 @@ button:hover {
   }
 }
 
-.toast {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background: #222;
+.demo-preview {
+  position: relative;
+  margin-top: 2rem;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.demo-image {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: black;
   color: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  pointer-events: none;
+  white-space: nowrap;
 }
