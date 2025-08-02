@@ -149,58 +149,94 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
           </>
         );
-      case 4:
-        return (
-          <div className="loading-screen">
-            {!showPreview && (
-              <>
-                <h2>Hold tight!</h2>
-                <p>Generating your onboarding experience...</p>
-                <div className="spinner"></div>
-              </>
-            )}
-            {showPreview && (
-              <div className="demo-preview" style={{ position: "relative" }}>
-                <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-                <div className="tooltip" style={{ top: "56%", left: "18%" }}>Enter your destination</div>
-                <div className="tooltip" style={{ top: "86%", left: "48%" }}>Click to see prices</div>
+case 4:
+  return (
+    <div className="loading-screen">
+      {!showPreview && (
+        <>
+          <h2>Hold tight!</h2>
+          <p>Generating your onboarding experience...</p>
+          <div className="spinner"></div>
+        </>
+      )}
 
-                <ExperimentCard onCreate={() => setShowExperimentModal(true)} />
+      {showPreview && (
+        <div className="demo-preview" style={{ position: "relative" }}>
+          <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
 
-                {showExperimentModal && (
-                  <ExperimentModal
-                    onClose={() => setShowExperimentModal(false)}
-                    onCreate={() => {
-                      setShowExperimentModal(false);
-                      setShowToast(true);
-                      setTimeout(() => setShowToast(false), 3000);
-                    }}
-                  />
-                )}
-
-                {showToast && (
-                  <div style={{
-                    position: "fixed",
-                    bottom: "24px",
-                    right: "24px",
-                    background: "#333",
-                    color: "#fff",
-                    padding: "12px 20px",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
-                  }}>
-                    ✅ Experiment created!
-                  </div>
-                )}
-              </div>
-            )}
+          {/* Tooltips */}
+          <div className="tooltip" style={{ top: '56%', left: '18%' }}>
+            Enter your destination
           </div>
-        );
-      default:
-        return null;
-    }
-  };
+          <div className="tooltip" style={{ top: '86%', left: '48%' }}>
+            Click to see prices
+          </div>
+
+          {/* Experiment Card */}
+          <div style={{
+            position: "absolute",
+            bottom: "24px",
+            right: "24px",
+            width: "280px",
+            padding: "16px",
+            backgroundColor: "#fff",
+            borderRadius: "16px",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            zIndex: 10,
+          }}>
+            <h4 style={{ marginBottom: '8px' }}>Test your flow</h4>
+            <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>
+              Split new users 50/50 into experiment and control groups.
+            </p>
+            <button
+              onClick={() => setShowExperimentModal(true)}
+              style={{
+                backgroundColor: '#000',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '10px 16px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: '500',
+                width: '100%',
+              }}
+            >
+              Create experiment
+            </button>
+          </div>
+
+          {/* Modal */}
+          {showExperimentModal && (
+            <ExperimentModal
+              onClose={() => {
+                setShowExperimentModal(false);
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 3000);
+              }}
+            />
+          )}
+
+          {/* Snackbar */}
+          {showToast && (
+            <div style={{
+              position: "fixed",
+              bottom: "24px",
+              right: "24px",
+              background: "#333",
+              color: "#fff",
+              padding: "12px 20px",
+              borderRadius: "8px",
+              fontSize: "14px",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
+            }}>
+              ✅ Experiment created!
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div className="modal">
