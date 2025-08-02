@@ -83,8 +83,8 @@ button:hover {
 
 .funnel-row {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 1rem; /* Add this line */
+  margin-bottom: 1.5rem;
 }
 
 .loading-screen {
