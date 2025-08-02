@@ -115,7 +115,14 @@ button:hover {
 
 .loading-screen {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem;
+}
+
+.demo-preview img {
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto 0;
+  display: block;
 }
 
 .spinner {
