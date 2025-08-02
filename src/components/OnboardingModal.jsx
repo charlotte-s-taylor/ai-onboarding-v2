@@ -1,6 +1,41 @@
 import React, { useState, useEffect } from "react";
 import "../main.css";
 
+const ExperimentCard = ({ onCreate }) => (
+  <div style={{
+    position: 'absolute',
+    bottom: '24px',
+    right: '24px',
+    width: '280px',
+    padding: '16px',
+    backgroundColor: '#fff',
+    borderRadius: '16px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    zIndex: 10,
+  }}>
+    <h4 style={{ marginBottom: '8px' }}>Test your flow</h4>
+    <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>
+      Split new users 50/50 into experiment and control groups.
+    </p>
+    <button
+      onClick={onCreate}
+      style={{
+        backgroundColor: '#000',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '8px',
+        padding: '10px 16px',
+        cursor: 'pointer',
+        fontSize: '14px',
+        fontWeight: '500',
+        width: '100%',
+      }}
+    >
+      Create experiment
+    </button>
+  </div>
+);
+
 const OnboardingModal = ({ onFinish }) => {
   const [step, setStep] = useState(1);
   const [showPreview, setShowPreview] = useState(false);
