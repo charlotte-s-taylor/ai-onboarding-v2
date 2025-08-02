@@ -50,7 +50,8 @@ input {
 
 .modal-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Pushes buttons to the right */
+  gap: 1rem;
   margin-top: 2rem;
 }
 
