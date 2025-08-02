@@ -1,9 +1,9 @@
-// src/components/OnboardingModal.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../main.css";
 
 const OnboardingModal = ({ onFinish }) => {
   const [step, setStep] = useState(1);
+  const [showPreview, setShowPreview] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -22,6 +22,13 @@ const OnboardingModal = ({ onFinish }) => {
     funnel2tags: "",
   });
 
+  useEffect(() => {
+    if (step === 4) {
+      const timeout = setTimeout(() => setShowPreview(true), 2500);
+      return () => clearTimeout(timeout);
+    }
+  }, [step]);
+
   const nextStep = () => setStep((s) => s + 1);
   const prevStep = () => setStep((s) => s - 1);
   const reset = () => {
@@ -39,8 +46,8 @@ const OnboardingModal = ({ onFinish }) => {
         return (
           <>
             <div className="modal-header">
-              <h2>Your details</h2>
               <button className="close-button" onClick={reset}>×</button>
+              <h2>Your details</h2>
               <div className="progress-bar"><div className="progress" style={{ width: "33%" }} /></div>
             </div>
             <p className="subtitle">Tell us about you.</p>
@@ -56,8 +63,8 @@ const OnboardingModal = ({ onFinish }) => {
         return (
           <>
             <div className="modal-header">
-              <h2>Your product</h2>
               <button className="close-button" onClick={reset}>×</button>
+              <h2>Your product</h2>
               <div className="progress-bar"><div className="progress" style={{ width: "66%" }} /></div>
             </div>
             <p className="subtitle">Tell us about your product to help us generate your onboarding experience.</p>
@@ -75,30 +82,32 @@ const OnboardingModal = ({ onFinish }) => {
         return (
           <>
             <div className="modal-header">
-              <h2>Your funnels</h2>
               <button className="close-button" onClick={reset}>×</button>
+              <h2>Your funnels</h2>
               <div className="progress-bar"><div className="progress" style={{ width: "100%" }} /></div>
             </div>
             <p className="subtitle">Add steps of your activation funnel to help generate your onboarding experience.</p>
+
             <h3>Funnel 1</h3>
             <div className="funnel-row">
               <input name="funnel1step1" placeholder="Step 1" onChange={handleChange} />
               <input name="funnel1step2" placeholder="Step 2" onChange={handleChange} />
               <input name="funnel1step3" placeholder="Step 3" onChange={handleChange} />
             </div>
-            <div className="funnel-tags">
+            <div>
               <label>Frontend tags<span>*</span></label>
-              <input name="funnel1tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
+              <input name="funnel1tags" placeholder="#selector, [data-testid='cta']" onChange={handleChange} />
             </div>
+
             <h3>Funnel 2</h3>
             <div className="funnel-row">
               <input name="funnel2step1" placeholder="Step 1" onChange={handleChange} />
               <input name="funnel2step2" placeholder="Step 2" onChange={handleChange} />
               <input name="funnel2step3" placeholder="Step 3" onChange={handleChange} />
             </div>
-            <div className="funnel-tags">
+            <div>
               <label>Frontend tags<span>*</span></label>
-              <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
+              <input name="funnel2tags" placeholder="#selector, [data-testid='cta']" onChange={handleChange} />
             </div>
           </>
         );
@@ -107,16 +116,20 @@ const OnboardingModal = ({ onFinish }) => {
           <div className="loading-screen">
             <h2>Hold tight!</h2>
             <p>Generating your onboarding experience...</p>
-            <div className="spinner"></div>
-            <div className="demo-preview">
-              <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-              <div className="tooltip" style={{ top: '60%', left: '10%' }}>
-                <span className="tooltip-text">Enter destination</span>
+
+            {!showPreview && <div className="spinner"></div>}
+
+            {showPreview && (
+              <div className="demo-preview">
+                <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
+                <div className="tooltip" style={{ top: '60%', left: '10%' }}>
+                  Enter destination
+                </div>
+                <div className="tooltip" style={{ top: '60%', left: '60%' }}>
+                  Find prices
+                </div>
               </div>
-              <div className="tooltip" style={{ top: '60%', left: '60%' }}>
-                <span className="tooltip-text">Find prices</span>
-              </div>
-            </div>
+            )}
           </div>
         );
       default:
@@ -129,7 +142,11 @@ const OnboardingModal = ({ onFinish }) => {
       {renderStep()}
       {step < 4 && (
         <div className="modal-footer">
-          {step > 1 && <button className="back-button" onClick={prevStep}>Back</button>}
+          {step > 1 && (
+            <button className="back-button" onClick={prevStep}>
+              Back
+            </button>
+          )}
           <button
             className="next-button"
             onClick={() => {
