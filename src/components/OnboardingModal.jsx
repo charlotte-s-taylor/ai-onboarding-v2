@@ -1,3 +1,4 @@
+// src/components/OnboardingModal.jsx
 import React, { useState } from "react";
 import "../main.css";
 
@@ -11,9 +12,13 @@ const OnboardingModal = ({ onFinish }) => {
     link: "",
     activation1: "",
     activation2: "",
-    funnel1steps: "",
+    funnel1steps1: "",
+    funnel1steps2: "",
+    funnel1steps3: "",
     funnel1tags: "",
-    funnel2steps: "",
+    funnel2steps1: "",
+    funnel2steps2: "",
+    funnel2steps3: "",
     funnel2tags: "",
   });
 
@@ -35,8 +40,8 @@ const OnboardingModal = ({ onFinish }) => {
           <>
             <div className="modal-header">
               <h2>Your details</h2>
-              <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "33%" }} /></div>
+              <button className="close-button top-right" onClick={reset}>×</button>
             </div>
             <p className="subtitle">Tell us about you.</p>
             <label>Name<span>*</span></label>
@@ -52,8 +57,8 @@ const OnboardingModal = ({ onFinish }) => {
           <>
             <div className="modal-header">
               <h2>Your product</h2>
-              <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "66%" }} /></div>
+              <button className="close-button top-right" onClick={reset}>×</button>
             </div>
             <p className="subtitle">Tell us about your product to help us generate your onboarding experience.</p>
             <label>Product feature/name<span>*</span></label>
@@ -61,9 +66,9 @@ const OnboardingModal = ({ onFinish }) => {
             <label>Link to your application<span>*</span></label>
             <input name="link" placeholder="Add link" onChange={handleChange} />
             <label>Activation step 1<span>*</span></label>
-            <input name="activation1" placeholder='e.g. "Create a new project"' onChange={handleChange} />
+            <input name="activation1" placeholder="First activation step e.g. create a new project" onChange={handleChange} />
             <label>Activation step 2</label>
-            <input name="activation2" placeholder='e.g. "Invite a teammate"' onChange={handleChange} />
+            <input name="activation2" placeholder="Second activation step e.g. add a colleague" onChange={handleChange} />
           </>
         );
       case 3:
@@ -71,31 +76,29 @@ const OnboardingModal = ({ onFinish }) => {
           <>
             <div className="modal-header">
               <h2>Your activation funnels</h2>
-              <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "100%" }} /></div>
+              <button className="close-button top-right" onClick={reset}>×</button>
             </div>
-            <p className="subtitle">Add the steps and tags to generate your onboarding experience.</p>
+            <p className="subtitle">Add steps of your activation funnel to help generate your onboarding experience.</p>
             <h3>Funnel 1</h3>
             <div className="funnel-row">
-              <div>
-                <label>Steps in the funnel<span>*</span></label>
-                <input name="funnel1steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
-              </div>
-              <div>
-                <label>Frontend tags<span>*</span></label>
-                <input name="funnel1tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
-              </div>
+              <input name="funnel1steps1" placeholder="Step 1" onChange={handleChange} />
+              <input name="funnel1steps2" placeholder="Step 2" onChange={handleChange} />
+              <input name="funnel1steps3" placeholder="Step 3" onChange={handleChange} />
+            </div>
+            <div className="funnel-row spaced">
+              <label>Frontend tags<span>*</span></label>
+              <input name="funnel1tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
             </div>
             <h3>Funnel 2</h3>
             <div className="funnel-row">
-              <div>
-                <label>Steps in the funnel<span>*</span></label>
-                <input name="funnel2steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
-              </div>
-              <div>
-                <label>Frontend tags<span>*</span></label>
-                <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
-              </div>
+              <input name="funnel2steps1" placeholder="Step 1" onChange={handleChange} />
+              <input name="funnel2steps2" placeholder="Step 2" onChange={handleChange} />
+              <input name="funnel2steps3" placeholder="Step 3" onChange={handleChange} />
+            </div>
+            <div className="funnel-row spaced">
+              <label>Frontend tags<span>*</span></label>
+              <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
             </div>
           </>
         );
@@ -105,15 +108,10 @@ const OnboardingModal = ({ onFinish }) => {
             <h2>Hold tight!</h2>
             <p>Generating your onboarding experience...</p>
             <div className="spinner"></div>
-
             <div className="demo-preview">
               <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-              <div className="tooltip" style={{ top: '60%', left: '10%' }}>
-                Enter destination
-              </div>
-              <div className="tooltip" style={{ top: '60%', left: '60%' }}>
-                Find prices
-              </div>
+              <div className="tooltip" style={{ top: '60%', left: '10%' }}>Enter destination</div>
+              <div className="tooltip" style={{ top: '60%', left: '60%' }}>Find prices</div>
             </div>
           </div>
         );
@@ -127,7 +125,7 @@ const OnboardingModal = ({ onFinish }) => {
       {renderStep()}
       {step < 4 && (
         <div className="modal-footer">
-          {step > 1 && <button onClick={prevStep}>Back</button>}
+          {step > 1 && <button className="back-button" onClick={prevStep}>Back</button>}
           <button
             className="next-button"
             onClick={() => {
