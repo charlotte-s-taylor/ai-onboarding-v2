@@ -100,18 +100,23 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
           </>
         );
-      case 4:
-        return (
-          <div className="loading-screen">
-            <h2>Hold tight!</h2>
-            <p>Generating your onboarding experience...</p>
-            <div className="spinner"></div>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+case 4:
+  return (
+    <div className="loading-screen">
+      <h2>Hold tight!</h2>
+      <p>Generating your onboarding experience...</p>
+      <div className="spinner"></div>
+
+      <div className="demo-preview">
+        <p className="subtitle">Example onboarding flow:</p>
+        <img
+          src="/uber-dashboard.png"
+          alt="Uber UI demo with tooltips"
+          style={{ maxWidth: '100%', marginTop: '1rem', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
+        />
+      </div>
+    </div>
+  );
 
   return (
     <div className="modal">
