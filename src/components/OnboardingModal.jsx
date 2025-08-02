@@ -128,9 +128,9 @@ const OnboardingModal = ({ onFinish }) => {
                 <div className="tooltip" style={{ top: '56%', left: '18%' }}>
                   Enter your destination
                 </div>
-                <div className="tooltip" style={{ top: '86%', left: '48%' }}>
-                  Find prices
-                </div>
+              <div className="tooltip" style={{ top: '94%', left: '18%' }}>
+  Click to see prices
+</div>
               </div>
             )}
           </div>
