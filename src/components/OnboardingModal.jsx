@@ -47,7 +47,6 @@ const OnboardingModal = ({ onFinish }) => {
             <input name="role" placeholder="Add role" onChange={handleChange} />
           </>
         );
-
       case 2:
         return (
           <>
@@ -62,12 +61,11 @@ const OnboardingModal = ({ onFinish }) => {
             <label>Link to your application<span>*</span></label>
             <input name="link" placeholder="Add link" onChange={handleChange} />
             <label>Activation step 1<span>*</span></label>
-            <input name="activation1" placeholder="First activation step e.g. create a new project" onChange={handleChange} />
+            <input name="activation1" placeholder='e.g. "Create a new project"' onChange={handleChange} />
             <label>Activation step 2</label>
-            <input name="activation2" placeholder="Second activation step e.g. add a colleague" onChange={handleChange} />
+            <input name="activation2" placeholder='e.g. "Invite a teammate"' onChange={handleChange} />
           </>
         );
-
       case 3:
         return (
           <>
@@ -76,7 +74,7 @@ const OnboardingModal = ({ onFinish }) => {
               <button className="close-button" onClick={reset}>×</button>
               <div className="progress-bar"><div className="progress" style={{ width: "100%" }} /></div>
             </div>
-            <p className="subtitle">Add steps of your activation funnel to help generate your onboarding experience.</p>
+            <p className="subtitle">Add the steps and tags to generate your onboarding experience.</p>
             <h3>Funnel 1</h3>
             <div className="funnel-row">
               <div>
@@ -91,23 +89,23 @@ const OnboardingModal = ({ onFinish }) => {
             <h3>Funnel 2</h3>
             <div className="funnel-row">
               <div>
-                <label>Steps in the funnel</label>
+                <label>Steps in the funnel<span>*</span></label>
                 <input name="funnel2steps" placeholder="Step 1, Step 2, Step 3" onChange={handleChange} />
               </div>
               <div>
-                <label>Frontend tags</label>
+                <label>Frontend tags<span>*</span></label>
                 <input name="funnel2tags" placeholder="#profile-pic, [data-testid='cta-button']" onChange={handleChange} />
               </div>
             </div>
           </>
         );
-
       case 4:
         return (
           <div className="loading-screen">
             <h2>Hold tight!</h2>
             <p>Generating your onboarding experience...</p>
             <div className="spinner"></div>
+
             <div className="demo-preview">
               <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
               <div className="tooltip" style={{ top: '60%', left: '10%' }}>
@@ -119,7 +117,6 @@ const OnboardingModal = ({ onFinish }) => {
             </div>
           </div>
         );
-
       default:
         return null;
     }
