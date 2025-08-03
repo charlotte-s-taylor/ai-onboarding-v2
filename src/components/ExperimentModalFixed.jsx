@@ -13,18 +13,26 @@ const ExperimentModal = ({ onClose }) => {
         </p>
       </div>
 
-      <div className="modal-body">
-        <label style={{ textAlign: "left" }}>Start Date<span>*</span></label>
-        <input placeholder="Enter start date" />
+      <div className="modal-content">
+        <div className="form-group">
+          <label className="left-aligned-label">Start Date<span>*</span></label>
+          <input placeholder="Enter start date" />
+        </div>
 
-        <label style={{ textAlign: "left" }}>Duration<span>*</span></label>
-        <input placeholder="Select duration" />
+        <div className="form-group">
+          <label className="left-aligned-label">Duration<span>*</span></label>
+          <input placeholder="Select duration" />
+        </div>
 
-        <label style={{ textAlign: "left" }}>Activation goal 1<span>*</span></label>
-        <input placeholder="e.g. Increase activation of 'create a project'" />
+        <div className="form-group">
+          <label className="left-aligned-label">Activation goal 1<span>*</span></label>
+          <input placeholder="e.g. Increase activation of 'create a project'" />
+        </div>
 
-        <label style={{ textAlign: "left" }}>Activation goal 2</label>
-        <input placeholder="e.g. Increase activation of 'add a colleague'" />
+        <div className="form-group">
+          <label className="left-aligned-label">Activation goal 2</label>
+          <input placeholder="e.g. Increase activation of 'add a colleague'" />
+        </div>
       </div>
 
       <div className="modal-footer">
