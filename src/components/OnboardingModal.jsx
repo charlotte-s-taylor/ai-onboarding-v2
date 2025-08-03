@@ -1,37 +1,36 @@
+// OnboardingModal.jsx
 import React, { useState, useEffect } from "react";
 import "../main.css";
 import ExperimentModalFixed from "./ExperimentModalFixed";
 
 const ExperimentCard = ({ onCreate }) => (
-  <div
-    style={{
-      position: "absolute",
-      bottom: "24px",
-      right: "24px",
-      width: "280px",
-      padding: "16px",
-      backgroundColor: "#fff",
-      borderRadius: "16px",
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-      zIndex: 10,
-    }}
-  >
-    <h4 style={{ marginBottom: "8px" }}>Test your flow</h4>
-    <p style={{ fontSize: "14px", color: "#666", marginBottom: "16px" }}>
+  <div style={{
+    position: 'absolute',
+    bottom: '24px',
+    right: '24px',
+    width: '280px',
+    padding: '16px',
+    backgroundColor: '#fff',
+    borderRadius: '16px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    zIndex: 10,
+  }}>
+    <h4 style={{ marginBottom: '8px' }}>Test your flow</h4>
+    <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>
       Split new users 50/50 into experiment and control groups.
     </p>
     <button
       onClick={onCreate}
       style={{
-        backgroundColor: "#000",
-        color: "#fff",
-        border: "none",
-        borderRadius: "8px",
-        padding: "10px 16px",
-        cursor: "pointer",
-        fontSize: "14px",
-        fontWeight: "500",
-        width: "100%",
+        backgroundColor: '#000',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '8px',
+        padding: '10px 16px',
+        cursor: 'pointer',
+        fontSize: '14px',
+        fontWeight: '500',
+        width: '100%',
       }}
     >
       Create experiment
@@ -88,9 +87,7 @@ const OnboardingModal = ({ onFinish }) => {
             <div className="modal-header">
               <button className="close-button" onClick={reset}>×</button>
               <h2>Your details</h2>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: "33%" }} />
-              </div>
+              <div className="progress-bar"><div className="progress" style={{ width: "33%" }} /></div>
             </div>
             <p className="subtitle">Tell us about you.</p>
             <label>Name<span>*</span></label>
@@ -107,9 +104,7 @@ const OnboardingModal = ({ onFinish }) => {
             <div className="modal-header">
               <button className="close-button" onClick={reset}>×</button>
               <h2>Your product</h2>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: "66%" }} />
-              </div>
+              <div className="progress-bar"><div className="progress" style={{ width: "66%" }} /></div>
             </div>
             <p className="subtitle">Tell us about your product to help us generate your onboarding experience.</p>
             <label>Product feature/name<span>*</span></label>
@@ -128,9 +123,7 @@ const OnboardingModal = ({ onFinish }) => {
             <div className="modal-header">
               <button className="close-button" onClick={reset}>×</button>
               <h2>Your funnels</h2>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: "100%" }} />
-              </div>
+              <div className="progress-bar"><div className="progress" style={{ width: "100%" }} /></div>
             </div>
             <p className="subtitle">Add steps of your activation funnel to help generate your onboarding experience.</p>
             <h3>Funnel 1</h3>
@@ -139,20 +132,16 @@ const OnboardingModal = ({ onFinish }) => {
               <input name="funnel1step2" placeholder="Step 2" value={formData.funnel1step2} onChange={handleChange} />
               <input name="funnel1step3" placeholder="Step 3" value={formData.funnel1step3} onChange={handleChange} />
             </div>
-            <div>
-              <label>Frontend tags<span>*</span></label>
-              <input name="funnel1tags" placeholder="#selector, [data-testid='cta']" value={formData.funnel1tags} onChange={handleChange} />
-            </div>
+            <label>Frontend tags<span>*</span></label>
+            <input name="funnel1tags" placeholder="#selector, [data-testid='cta']" value={formData.funnel1tags} onChange={handleChange} />
             <h3>Funnel 2</h3>
             <div className="funnel-row">
               <input name="funnel2step1" placeholder="Step 1" value={formData.funnel2step1} onChange={handleChange} />
               <input name="funnel2step2" placeholder="Step 2" value={formData.funnel2step2} onChange={handleChange} />
               <input name="funnel2step3" placeholder="Step 3" value={formData.funnel2step3} onChange={handleChange} />
             </div>
-            <div>
-              <label>Frontend tags<span>*</span></label>
-              <input name="funnel2tags" placeholder="#selector, [data-testid='cta']" value={formData.funnel2tags} onChange={handleChange} />
-            </div>
+            <label>Frontend tags<span>*</span></label>
+            <input name="funnel2tags" placeholder="#selector, [data-testid='cta']" value={formData.funnel2tags} onChange={handleChange} />
           </>
         );
       case 4:
@@ -165,14 +154,22 @@ const OnboardingModal = ({ onFinish }) => {
                 <div className="spinner"></div>
               </>
             )}
+
             {showPreview && (
               <div className="demo-preview" style={{ position: "relative" }}>
                 <img src="/uber-dashboard.png" alt="Uber demo" className="demo-image" />
-                <div className="tooltip" style={{ top: "56%", left: "18%" }}>Enter your destination</div>
-                <div className="tooltip" style={{ top: "86%", left: "48%" }}>Click to see prices</div>
+
+                <div className="tooltip" style={{ top: '56%', left: '18%' }}>
+                  Enter your destination
+                </div>
+                <div className="tooltip" style={{ top: '86%', left: '48%' }}>
+                  Click to see prices
+                </div>
+
                 <ExperimentCard onCreate={() => setShowExperimentModal(true)} />
+
                 {showExperimentModal && (
-                  <ExperimentModal
+                  <ExperimentModalFixed
                     onClose={() => {
                       setShowExperimentModal(false);
                       setShowToast(true);
@@ -180,6 +177,7 @@ const OnboardingModal = ({ onFinish }) => {
                     }}
                   />
                 )}
+
                 {showToast && (
                   <div style={{
                     position: "fixed",
