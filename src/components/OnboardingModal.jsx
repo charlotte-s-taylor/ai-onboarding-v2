@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../main.css";
-import ExperimentModal from "./ExperimentModalFixed";
+import ExperimentModalFixed from "./ExperimentModalFixed";
 
 const ExperimentCard = ({ onCreate }) => (
   <div
